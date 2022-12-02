@@ -19,8 +19,8 @@ public class Day2 {
         //Score for the outcome of the round: 0 = lost, 3 = draw, 6 = win
 
 
-        //----------------------------------------------------ANSWER CHALLENGE 1
-        int totalScore = 0;
+        int totalScoreChallenge1 = 0;
+        int totalScoreChallenge2 = 0;
 
         for (String s : input) {
             String[] play = s.split(" ");
@@ -30,104 +30,58 @@ public class Day2 {
             switch (myChoice) {
                 case "X":  //Rock = 1
                     switch (elfChoice) {
-                        case "A":   //Rock = draw = 3
-                            totalScore = totalScore + 3 + 1;
+                        case "A":   //Rock
+                            totalScoreChallenge1 += 3 + 1; //Rock = draw = 3
+                            totalScoreChallenge2 += 3; // need to lose = scissor
                             break;
-                        case "B":  //Paper = lost = 0
-                            totalScore = totalScore + 1;
+                        case "B":  //Paper
+                            totalScoreChallenge1 += 1; //Paper = lost = 0
+                            totalScoreChallenge2 +=  1; // need to lose = rock
                             break;
-                        case "C":  // Scissors = win = 6
-                            totalScore = totalScore + 6 + 1;
+                        case "C":   // Scissors
+                            totalScoreChallenge1 += 6 + 1; // Scissors = win = 6
+                            totalScoreChallenge2 += 2; // need to lose = paper
                             break;
                     }
                     break;
                 case "Y":  // Paper = 2
                     switch (elfChoice) {
-                        case "A":   //Rock = win = 6
-                            totalScore = totalScore + 6 + 2;
+                        case "A":   //Rock
+                            totalScoreChallenge1 += 6 + 2; //Rock = win = 6
+                            totalScoreChallenge2 += 3 + 1; // need to draw = rock
                             break;
-                        case "B":  //Paper = draw = 3
-                            totalScore = totalScore + 3 + 2;
+                        case "B":  //Paper
+                            totalScoreChallenge1 += 3 + 2; //Paper = draw = 3
+                            totalScoreChallenge2 += 3 + 2; // need to draw = paper
                             break;
-                        case "C":  // Scissors = lost = 0
-                            totalScore = totalScore + 2;
+                        case "C":  // Scissors
+                            totalScoreChallenge1 += 2; // Scissors = lost = 0
+                            totalScoreChallenge2 += 3 + 3; // need to draw = scissors
                             break;
                     }
                     break;
                 case "Z":  // Scissors = 3
                     switch (elfChoice) {
-                        case "A":   //Rock = lost = 0
-                            totalScore = totalScore + 3;
+                        case "A":   //Rock
+                            totalScoreChallenge1 += 3; //Rock = lost = 0
+                            totalScoreChallenge2 += 6 + 2; // need to win = paper
                             break;
-                        case "B":  //Paper = win = 6
-                            totalScore = totalScore + 6 + 3;
+                        case "B":  //Paper
+                            totalScoreChallenge1 += 6 + 3; //Paper = win = 6
+                            totalScoreChallenge2 += 6 + 3; // need to win = scissor
                             break;
-                        case "C":  // Scissors = draw = 3
-                            totalScore = totalScore + 3 + 3;
+                        case "C":  // Scissors
+                            totalScoreChallenge1 += 3 + 3; // Scissors = draw = 3
+                            totalScoreChallenge2 += 6 + 1; // need to win = rock
                             break;
                     }
                     break;
             }
         }
 
-        System.out.println(totalScore);
+        System.out.println(totalScoreChallenge1);
+        System.out.println(totalScoreChallenge2);
 
-
-
-
-        //----------------------------------------------------ANSWER CHALLENGE 2
-
-        int totalScore2 = 0;
-        for (String s : input) {
-            String[] play = s.split(" ");
-            String elfChoice = play[0];
-            String myChoice = play[1];
-
-            switch (elfChoice) {
-                case "A":   //Rock
-                    switch (myChoice) {
-                        case "X":  // need to lose = scissor
-                            totalScore2 = totalScore2 + 3;
-                            break;
-                        case "Y":  // need to draw = rock
-                            totalScore2 = totalScore2 + 3 + 1;
-                            break;
-                        case "Z":  // need to win = paper
-                            totalScore2 = totalScore2 + 6 + 2;
-                            break;
-                    }
-                    break;
-                case "B":  //Paper
-                    switch (myChoice) {
-                        case "X":  // need to lose = rock
-                            totalScore2 = totalScore2 + 1;
-                            break;
-                        case "Y":  // need to draw = paper
-                            totalScore2 = totalScore2 + 3 + 2;
-                            break;
-                        case "Z":  // need to win = scissor
-                            totalScore2 = totalScore2 + 6 + 3;
-                            break;
-                    }
-                    break;
-                case "C":  // Scissors
-                    switch (myChoice) {
-                        case "X":  // need to lose = paper
-                            totalScore2 = totalScore2 + 2;
-                            break;
-                        case "Y":  // need to draw = scissors
-                            totalScore2 = totalScore2 + 3 + 3;
-                            break;
-                        case "Z":  // need to win = rock
-                            totalScore2 = totalScore2 + 6 + 1;
-                            break;
-                    }
-                    break;
-            }
-
-        }
-
-        System.out.println(totalScore2);
 
     }
 }
