@@ -71,17 +71,20 @@ public class Day7 {
             }
         }
 
+        System.out.println(finalSum);
+
         Collections.sort(sizeList);
 
 
         int totalFreeSpace = 70000000 - sizeList.get(sizeList.size()-1);
-        System.out.println(totalFreeSpace);
-        System.out.println(sizeList.get(sizeList.size()-1));
+
+        totalFreeSpace = 30000000 - totalFreeSpace;
 
         int closerNumber = 0;
         for (int i = 1; i < sizeList.size(); i++) {
-            if (Math.abs(sizeList.get(i)-totalFreeSpace) <= Math.abs(sizeList.get(i-1)-totalFreeSpace) && sizeList.get(i)<totalFreeSpace) {
+            if (sizeList.get(i)>totalFreeSpace) {
                 closerNumber = sizeList.get(i);
+                break;
             }
 
         }
