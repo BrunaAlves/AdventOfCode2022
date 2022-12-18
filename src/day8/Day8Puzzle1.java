@@ -59,6 +59,7 @@ public class Day8Puzzle1 {
             trees.add(Arrays.stream(s.split("")).map(Integer::parseInt).collect(Collectors.toList()));
         }
 
+
         int totalOfVisibleTrees = (trees.size()*2-2) + (trees.get(0).size()*2-2);
 
 
